@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useState, lazy, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { WelcomeSection } from '@/components/WelcomeSection';
-import { HealthForm } from '@/components/HealthForm';
-import { AssessmentResults } from '@/components/AssessmentResults';
 import { HealthData, HealthAssessment } from '@/types/health';
 import { calculateHealthAssessment } from '@/lib/healthCalculations';
+
+// Lazy load components not needed on initial render
+const HealthForm = lazy(() => import('@/components/HealthForm').then(m => ({ default: m.HealthForm })));
+const AssessmentResults = lazy(() => import('@/components/AssessmentResults').then(m => ({ default: m.AssessmentResults })));
 
 type View = 'welcome' | 'form' | 'results';
 
@@ -65,7 +67,9 @@ const Index = () => {
               transition={{ duration: 0.3 }}
               className="bg-card rounded-2xl shadow-card border border-border/50 p-6 md:p-8"
             >
-              <HealthForm onSubmit={handleSubmit} />
+              <Suspense fallback={<div className="flex items-center justify-center p-12"><div className="animate-pulse text-muted-foreground">Loading...</div></div>}>
+                <HealthForm onSubmit={handleSubmit} />
+              </Suspense>
             </motion.div>
           )}
 
@@ -77,7 +81,9 @@ const Index = () => {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
             >
-              <AssessmentResults assessment={assessment} onReset={handleReset} />
+              <Suspense fallback={<div className="flex items-center justify-center p-12"><div className="animate-pulse text-muted-foreground">Loading...</div></div>}>
+                <AssessmentResults assessment={assessment} onReset={handleReset} />
+              </Suspense>
             </motion.div>
           )}
         </AnimatePresence>
