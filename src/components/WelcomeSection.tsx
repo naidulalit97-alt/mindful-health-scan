@@ -80,11 +80,20 @@ export function WelcomeSection({ onStart }: WelcomeSectionProps) {
         transition={{ delay: 0.8 }}
         className="mt-12 pt-8 border-t border-border"
       >
-        <p className="text-sm text-muted-foreground italic">
-          This tool is a Preventive Health Risk Indicator, not a medical diagnosis system. 
-          It focuses on awareness, prevention, and risk indication. For medical concerns, 
-          always consult a qualified healthcare professional.
-        </p>
+        <div className="bg-muted/50 rounded-xl p-5 text-left space-y-3">
+          <p className="text-sm font-medium text-foreground">Important Notice:</p>
+          <ul className="text-sm text-muted-foreground space-y-1">
+            <li>❌ This tool does not diagnose diseases</li>
+            <li>❌ This tool does not prescribe medication</li>
+            <li>❌ This tool does not claim medical certainty</li>
+            <li>✅ Focus on awareness, prevention, and risk indication</li>
+            <li>✅ Encourages professional consultation when risk is high</li>
+          </ul>
+          <p className="text-sm text-muted-foreground italic pt-2 border-t border-border">
+            "This assessment is for health awareness only and is not a medical diagnosis. 
+            For medical concerns, consult a licensed healthcare professional."
+          </p>
+        </div>
       </motion.div>
     </div>
   );
