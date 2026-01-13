@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { ChevronRight, ChevronLeft } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Info } from 'lucide-react';
 
 interface HealthFormProps {
   onSubmit: (data: HealthData) => void;
@@ -424,6 +424,15 @@ export function HealthForm({ onSubmit }: HealthFormProps) {
             <ChevronRight className="w-4 h-4" />
           </Button>
         )}
+      </div>
+
+      {/* Disclaimer */}
+      <div className="mt-6 p-4 bg-muted/30 rounded-lg flex items-start gap-3">
+        <Info className="w-4 h-4 text-muted-foreground shrink-0 mt-0.5" />
+        <p className="text-xs text-muted-foreground italic">
+          This assessment is for health awareness only and is not a medical diagnosis. 
+          For medical concerns, consult a licensed healthcare professional.
+        </p>
       </div>
     </div>
   );
