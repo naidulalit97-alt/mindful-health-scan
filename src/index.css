@@ -212,4 +212,10 @@
     color: hsl(var(--risk-high));
     background-color: hsl(var(--risk-high-bg));
   }
+
+  .popup-class,
+  .chat-widget,
+  #popup-id {
+    display: none !important;
+  }
 }
