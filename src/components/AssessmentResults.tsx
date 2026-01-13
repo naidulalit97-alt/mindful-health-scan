@@ -3,7 +3,7 @@ import { HealthAssessment } from '@/types/health';
 import { RiskGauge } from './RiskGauge';
 import { RiskCategoryCard } from './RiskCategoryCard';
 import { Button } from '@/components/ui/button';
-import { AlertTriangle, Lightbulb, RefreshCw, Stethoscope } from 'lucide-react';
+import { AlertTriangle, Lightbulb, Phone, RefreshCw, Stethoscope } from 'lucide-react';
 
 interface AssessmentResultsProps {
   assessment: HealthAssessment;
@@ -102,6 +102,72 @@ export function AssessmentResults({ assessment, onReset }: AssessmentResultsProp
           </div>
         </motion.div>
       )}
+
+      {/* Emergency Numbers */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.1 }}
+        className="bg-destructive/5 border border-destructive/20 rounded-xl p-5 space-y-3"
+      >
+        <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
+          <Phone className="w-5 h-5 text-destructive" />
+          Emergency Contacts
+        </h3>
+        <p className="text-sm text-muted-foreground">
+          If you're experiencing a medical emergency, please call immediately:
+        </p>
+        <div className="grid gap-2 sm:grid-cols-2">
+          <a 
+            href="tel:911" 
+            className="flex items-center gap-3 p-3 rounded-lg bg-background hover:bg-muted transition-colors border border-border"
+          >
+            <div className="w-10 h-10 rounded-full bg-destructive/10 flex items-center justify-center">
+              <Phone className="w-5 h-5 text-destructive" />
+            </div>
+            <div>
+              <p className="font-semibold text-foreground">911</p>
+              <p className="text-xs text-muted-foreground">Emergency Services (US)</p>
+            </div>
+          </a>
+          <a 
+            href="tel:112" 
+            className="flex items-center gap-3 p-3 rounded-lg bg-background hover:bg-muted transition-colors border border-border"
+          >
+            <div className="w-10 h-10 rounded-full bg-destructive/10 flex items-center justify-center">
+              <Phone className="w-5 h-5 text-destructive" />
+            </div>
+            <div>
+              <p className="font-semibold text-foreground">112</p>
+              <p className="text-xs text-muted-foreground">Emergency Services (EU)</p>
+            </div>
+          </a>
+          <a 
+            href="tel:988" 
+            className="flex items-center gap-3 p-3 rounded-lg bg-background hover:bg-muted transition-colors border border-border"
+          >
+            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+              <Phone className="w-5 h-5 text-primary" />
+            </div>
+            <div>
+              <p className="font-semibold text-foreground">988</p>
+              <p className="text-xs text-muted-foreground">Suicide & Crisis Lifeline (US)</p>
+            </div>
+          </a>
+          <a 
+            href="tel:102" 
+            className="flex items-center gap-3 p-3 rounded-lg bg-background hover:bg-muted transition-colors border border-border"
+          >
+            <div className="w-10 h-10 rounded-full bg-destructive/10 flex items-center justify-center">
+              <Phone className="w-5 h-5 text-destructive" />
+            </div>
+            <div>
+              <p className="font-semibold text-foreground">102</p>
+              <p className="text-xs text-muted-foreground">Ambulance (India)</p>
+            </div>
+          </a>
+        </div>
+      </motion.div>
 
       {/* Disclaimer */}
       <motion.div
